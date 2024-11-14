@@ -1,23 +1,22 @@
-import { create, validateUserToCreate } from "../../models/userModel.js"
+import { create, validateAgendaToCreate } from "../../models/agendaModel.js"
 import { v4 as uuid } from 'uuid'
 import bcrypt from 'bcrypt'
 
-const createUser = async (req, res, next) => {
+const createAgenda = async (req, res, next) => {
    try{
-        const user = req.body
-        const userValidated = validateUserToCreate(user)
+        const agenda = req.body
+        const agendaValidated = validateAgendaToCreate(agenda)
 
-        if(userValidated?.error){
+        if(agendaValidated?.error){
             return res.status(400).json({
-                    error: "Erro ao criar usuário, verifique os dados!",
+                    error: "Erro ao criar agenda, verifique os dados!",
                     fieldErrors: userValidated.error.flatten().fieldErrors
             })
         }
 
-        userValidated.data.public_id = uuid()
-        userValidated.data.pass = bcrypt.hashSync(userValidated.data.pass, 10)
+        agendaValidated.data.public_id = uuid()
 
-        const result = await create(userValidated.data) 
+        const result = await create(agendaValidated.data) 
 
         if(!result)
             return res.status(500).json({
@@ -25,7 +24,7 @@ const createUser = async (req, res, next) => {
             })
 
         return res.json({
-            success: "Usuário criado com sucesso!",
+            success: "Agenda criada com sucesso!",
             user: result
         })
     } catch(error) {
@@ -33,10 +32,10 @@ const createUser = async (req, res, next) => {
         if(error?.code === 'P2002')
             return res.status(400).json({
                 error: "Erro ao criar usuário, verifique os dados!",
-                fieldErrors: { email: ['Email já cadastrado']}
+                fieldErrors: { id: ['id já cadastrado']}
             })
         next(error)
     }
 }
 
-export default createUser
+export default createAgenda

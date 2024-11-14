@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model agendas {
+  id            Int       @id @default(autoincrement())
+  titulo        String    @db.VarChar(100)
+  cor           String?   @db.VarChar(10)
+  descricao     String    @db.VarChar(250)
+
+  eventos      eventos[]
+}
+
+model eventos {
+  id            Int       @id @default(autoincrement())
+  agendaId      Int
+  titulo        String    @db.VarChar(100)
+  descricao     String    @db.VarChar(250)
+  dataInicio    DateTime  @db.Date   
+  dataFim       DateTime  @db.Date   
+
+
+  agendas agendas? @relation(fields: [agendaId], references: [id])
+}
+
