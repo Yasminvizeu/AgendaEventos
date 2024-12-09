@@ -13,9 +13,6 @@ const createAgenda = async (req, res, next) => {
                     fieldErrors: userValidated.error.flatten().fieldErrors
             })
         }
-
-        agendaValidated.data.public_id = uuid()
-
         const result = await create(agendaValidated.data) 
 
         if(!result)

@@ -14,8 +14,6 @@ const createEvento = async (req, res, next) => {
             })
         }
 
-        eventValidated.data.public_id = uuid()
-
         const result = await create(eventValidated.data) 
 
         if(!result)
