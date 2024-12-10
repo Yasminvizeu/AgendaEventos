@@ -1,6 +1,4 @@
 import { create, validateEventoToCreate } from "../../models/eventoModel.js"
-import { v4 as uuid } from 'uuid'
-import bcrypt from 'bcrypt'
 
 const createEvento = async (req, res, next) => {
    try{
