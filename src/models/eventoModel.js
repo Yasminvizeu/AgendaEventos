@@ -12,8 +12,8 @@ const eventoSchema = z.object({
     descricao: z.string()
       .min(5, "A descrição do evento deve ter pelo menos 5 caracteres")
       .max(250, "A descrição do evento não pode ultrapassar 250 caracteres"), 
-    dataInicio: z.date(),  
-    dataFim: z.date()      
+      dataInicio: z.string(),  
+      dataFim: z.string()     
   });
 
 export const validateEvento = (evento) => {

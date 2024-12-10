@@ -1,4 +1,4 @@
-import { remove } from "../../models/agendaModel.js"
+import { remove } from "../../models/eventoModel.js"
 
 const deleteEvento = async (req, res, next) => {
     try {
@@ -7,13 +7,13 @@ const deleteEvento = async (req, res, next) => {
 
         return res.json({
             message: "Evento removido com sucesso!", 
-            agenda
+            evento
         })
     } catch (error) {
         console.log(error)
         if(error?.code === 'P2025')
             return res.status(404).json({
-                error: "Evento não encontrada"
+                error: "Evento não encontrado"
             })
         next(error)
     }

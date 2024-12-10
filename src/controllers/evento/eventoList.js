@@ -1,8 +1,8 @@
-import { getAll } from '../../models/agendaModel.js'
+import { getAll } from '../../models/eventoModel.js'
 
 const eventoList = async (req, res) => {
 
-    const agenda = await getAll()
+    const evento = await getAll()
     res.json(evento)
 }
 

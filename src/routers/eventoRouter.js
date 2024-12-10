@@ -6,9 +6,9 @@ import deleteEvento from '../controllers/evento/deleteEvento.js'
 
 const router = express.Router()
 
-router.get('/', eventoList)
+router.get('/list', eventoList)
 router.post('/', createEvento)
-router.put('/', editEvento)
-router.delete('/', deleteEvento)
+router.put('/:id', editEvento)
+router.delete('/:id', deleteEvento)
 
 export default router

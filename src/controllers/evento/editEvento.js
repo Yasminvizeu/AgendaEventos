@@ -1,4 +1,4 @@
-import { update } from "../../models/agendaModel.js"
+import { update } from "../../models/eventoModel.js"
 
 const editEvento = async (req, res) => {
     const {id} = req.params

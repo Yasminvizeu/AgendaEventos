@@ -1,15 +1,15 @@
-import { create, validateAgendaToCreate } from "../../models/agendaModel.js"
+import { create, validateEventoToCreate } from "../../models/eventoModel.js"
 import { v4 as uuid } from 'uuid'
 import bcrypt from 'bcrypt'
 
 const createEvento = async (req, res, next) => {
    try{
         const evento = req.body
-        const eventValidated = validateAgendaToCreate(evento)
+        const eventValidated = validateEventoToCreate(evento)
 
         if(eventValidated?.error){
             return res.status(400).json({
-                    error: "Erro ao criar agenda, verifique os dados!",
+                    error: "Erro ao criar evento, verifique os dados!",
                     fieldErrors: eventValidated.error.flatten().fieldErrors
             })
         }

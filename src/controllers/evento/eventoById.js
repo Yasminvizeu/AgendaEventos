@@ -11,7 +11,7 @@ const eventoById = async (req, res) => {
         })
     else
         return res.status(404).json({
-            error: "evento não encontrada"
+            error: "evento não encontrado"
         })
 
 }
