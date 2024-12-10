@@ -10,7 +10,7 @@ const createAgenda = async (req, res, next) => {
         if(agendaValidated?.error){
             return res.status(400).json({
                     error: "Erro ao criar agenda, verifique os dados!",
-                    fieldErrors: userValidated.error.flatten().fieldErrors
+                    fieldErrors: agendaValidated.error.flatten().fieldErrors
             })
         }
         const result = await create(agendaValidated.data) 

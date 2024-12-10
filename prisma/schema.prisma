@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://root:root@localhost:3306/agendaevento"
 }
 
 model agendas {
@@ -21,8 +21,8 @@ model eventos {
   agendaId      Int
   titulo        String    @db.VarChar(100)
   descricao     String    @db.VarChar(250)
-  dataInicio    DateTime  @db.Date   
-  dataFim       DateTime  @db.Date   
+  dataInicio    DateTime  @db.DateTime
+  dataFim       DateTime  @db.DateTime   
 
 
   agendas agendas? @relation(fields: [agendaId], references: [id])
