@@ -22,7 +22,7 @@ const createEvento = async (req, res, next) => {
             })
 
         return res.json({
-            success: "Evento criada com sucesso!",
+            success: "Evento criado com sucesso!",
             user: result
         })
     } catch(error) {
